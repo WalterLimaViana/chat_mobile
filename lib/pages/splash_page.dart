@@ -1,5 +1,9 @@
 import 'package:chat_mobile/allConstants/color_constants.dart';
+import 'package:chat_mobile/pages/home_page.dart';
+import 'package:chat_mobile/pages/login_page.dart';
+import 'package:chat_mobile/provider/auth_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SplashPage extends StatefulWidget {
   SplashPage({Key? key}) : super(key: key);
@@ -9,6 +13,27 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Future.delayed(const Duration(seconds: 5), () {
+      checkSignedIn();
+    });
+  }
+
+  void checkSignedIn() async {
+    AuthProvider authProvider = context.read<AuthProvider>();
+    bool isLoggedIn = await authProvider.isLoggedIn();
+    if (isLoggedIn) {
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => HomePage()));
+      return;
+    }
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => LoginPage()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
