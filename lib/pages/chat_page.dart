@@ -1,3 +1,4 @@
+import 'package:chat_mobile/allConstants/app_contants.dart';
 import 'package:flutter/material.dart';
 
 class ChatPage extends StatefulWidget {
@@ -21,6 +22,13 @@ class ChatPage extends StatefulWidget {
 class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text(
+          AppConstants.profileTitle,
+        ),
+      ),
+    );
   }
 }

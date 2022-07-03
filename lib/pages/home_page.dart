@@ -1,4 +1,4 @@
-import 'dart:html';
+// import 'dart:html';
 import 'dart:async';
 import 'dart:io';
 
@@ -80,7 +80,7 @@ class _HomePageState extends State<HomePage> {
                 style:
                     TextStyle(color: AppColors.white, fontSize: Sizes.dimen_16),
               ),
-              vertical15,
+              vertical10,
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -256,7 +256,8 @@ class _HomePageState extends State<HomePage> {
                 }
               },
               decoration: const InputDecoration.collapsed(
-                hintText: 'Search here...',
+                fillColor: Colors.white,
+                hintText: 'Buscar Usuário...',
                 hintStyle: TextStyle(color: AppColors.white),
               ),
             ),

@@ -1,16 +1,19 @@
-# chat_mobile
+# Chat Mobile
 
-A new Flutter project.
+## Sobre o app
 
-## Getting Started
+O Chat Mobile é um aplicativo de mensagens desenvolvido com flutter e utilizando o Firebase.
 
-This project is a starting point for a Flutter application.
+##
 
-A few resources to get you started if this is your first Flutter project:
+No aplicativo é possivel conversar com outra pessoa que esteja cadastrada, utilizando a cont google como autenticação.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Objetivos
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+O objetivo desse projeto é aperfeiçoar os conhecimentos em dart e flutter, além de aprender novas funcionalidades e uso do firebase. Alguns dos conhecimentos obtidos:
+
+- Configuração do firebase pelo próprio VSCode utilizando FlutterFire CLI para fazer a ativação;
+- Criar novos documentos e arquivos armazenando diretamente no Firebase;
+- Aperfeiçoamento dos widgets , através de novas classes;
+- Criação de funções utilizando o Future;
+- Criação e implantação de providers;
