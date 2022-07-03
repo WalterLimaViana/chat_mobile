@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "645839321843",
+    "firebase_url": "https://chatmobile-118cc-default-rtdb.firebaseio.com",
+    "project_id": "chatmobile-118cc",
+    "storage_bucket": "chatmobile-118cc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:645839321843:android:bca6a5534b506d194d5586",
+        "android_client_info": {
+          "package_name": "com.example.chat_mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "645839321843-85tgpkiomvhh09mgu18d4rmc8rgc5jta.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcSr7n1BDX7O7AXp24R6wYztI1bY7ajkE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "645839321843-85tgpkiomvhh09mgu18d4rmc8rgc5jta.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
