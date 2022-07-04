@@ -158,6 +158,7 @@ class _ChatPageState extends State<ChatPage> {
         isLoading = false;
       });
       Fluttertoast.showToast(msg: e.message ?? e.toString());
+      print('falha no envio');
     }
   }
 
@@ -174,7 +175,7 @@ class _ChatPageState extends State<ChatPage> {
     }
   }
 
-// Para checkar se a mesnagem foi recebida
+// Para checkar se a mensagem foi recebida
   bool isMessageReceived(int index) {
     if ((index > 0 &&
             listMessages[index - 1].get(FirestoreConstants.idFrom) ==
@@ -235,56 +236,59 @@ class _ChatPageState extends State<ChatPage> {
   }
 
   Widget buildMessageInput() {
-    return SizedBox(
-      width: double.infinity,
-      height: 50,
-      child: Row(
-        children: [
-          Container(
-            margin: const EdgeInsets.only(right: Sizes.dimen_4),
-            decoration: BoxDecoration(
-              color: AppColors.burgundy,
-              borderRadius: BorderRadius.circular(Sizes.dimen_30),
-            ),
-            child: IconButton(
-              onPressed: getImage,
-              icon: Icon(Icons.camera_alt, size: Sizes.dimen_28),
-              color: AppColors.white,
-            ),
-          ),
-          Flexible(
-            child: TextField(
-              focusNode: focusNode,
-              textInputAction: TextInputAction.send,
-              textCapitalization: TextCapitalization.sentences,
-              controller: textEditingController,
-              decoration:
-                  kTextInputDecoration.copyWith(hintText: 'digite aqui...'),
-              onSubmitted: (value) {
-                onSendMessage(
-                  textEditingController.text,
-                  MessageType.text,
-                );
-              },
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(left: Sizes.dimen_4),
-            decoration: BoxDecoration(
-              color: AppColors.burgundy,
-              borderRadius: BorderRadius.circular(
-                Sizes.dimen_30,
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10.0),
+      child: SizedBox(
+        width: double.infinity,
+        height: 50,
+        child: Row(
+          children: [
+            Container(
+              margin: const EdgeInsets.only(right: Sizes.dimen_4),
+              decoration: BoxDecoration(
+                color: AppColors.burgundy,
+                borderRadius: BorderRadius.circular(Sizes.dimen_30),
+              ),
+              child: IconButton(
+                onPressed: getImage,
+                icon: Icon(Icons.camera_alt, size: Sizes.dimen_28),
+                color: AppColors.white,
               ),
             ),
-            child: IconButton(
-              onPressed: () {
-                onSendMessage(textEditingController.text, MessageType.text);
-              },
-              icon: Icon(Icons.send_rounded),
-              color: AppColors.white,
+            Flexible(
+              child: TextField(
+                focusNode: focusNode,
+                textInputAction: TextInputAction.send,
+                textCapitalization: TextCapitalization.sentences,
+                controller: textEditingController,
+                decoration:
+                    kTextInputDecoration.copyWith(hintText: 'digite aqui...'),
+                onSubmitted: (value) {
+                  onSendMessage(
+                    textEditingController.text,
+                    MessageType.text,
+                  );
+                },
+              ),
             ),
-          )
-        ],
+            Container(
+              margin: const EdgeInsets.only(left: Sizes.dimen_4),
+              decoration: BoxDecoration(
+                color: AppColors.burgundy,
+                borderRadius: BorderRadius.circular(
+                  Sizes.dimen_30,
+                ),
+              ),
+              child: IconButton(
+                onPressed: () {
+                  onSendMessage(textEditingController.text, MessageType.text);
+                },
+                icon: Icon(Icons.send_rounded),
+                color: AppColors.white,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
@@ -302,9 +306,12 @@ class _ChatPageState extends State<ChatPage> {
                 chatMessages.type == MessageType.text
                     ? messageBubble(
                         chatContent: chatMessages.content,
-                        color: AppColors.white,
+                        color: AppColors.spaceLight,
                         textColor: AppColors.white,
-                        margin: const EdgeInsets.only(right: Sizes.dimen_10),
+                        margin: const EdgeInsets.only(
+                          right: Sizes.dimen_10,
+                          bottom: 10,
+                        ),
                       )
                     : chatMessages.type == MessageType.image
                         ? Container(
@@ -342,8 +349,11 @@ class _ChatPageState extends State<ChatPage> {
                             );
                           },
                           errorBuilder: (context, object, stackTrace) {
-                            return const Icon(Icons.account_circle,
-                                size: 35, color: AppColors.greyColor);
+                            return const Icon(
+                              Icons.account_circle,
+                              size: 35,
+                              color: AppColors.greyColor,
+                            );
                           },
                         ),
                       )
@@ -421,23 +431,25 @@ class _ChatPageState extends State<ChatPage> {
                       ),
                 chatMessages.type == MessageType.text
                     ? messageBubble(
-                        chatContent: chatMessages.content,
                         color: AppColors.burgundy,
                         textColor: AppColors.white,
+                        chatContent: chatMessages.content,
                         margin: const EdgeInsets.only(
-                            left: Sizes.dimen_10, top: Sizes.dimen_10),
+                            left: Sizes.dimen_10, bottom: 10),
                       )
                     : chatMessages.type == MessageType.image
                         ? Container(
                             margin: const EdgeInsets.only(
-                                left: Sizes.dimen_10, top: Sizes.dimen_10),
+                              left: Sizes.dimen_10,
+                              top: Sizes.dimen_10,
+                            ),
                             child: chatImage(
                                 imageSrc: chatMessages.content, onTap: () {}),
                           )
                         : const SizedBox.shrink(),
               ],
             ),
-            isMessageSend(index)
+            isMessageReceived(index)
                 ? Container(
                     margin: const EdgeInsets.only(
                       left: Sizes.dimen_50,
@@ -454,7 +466,8 @@ class _ChatPageState extends State<ChatPage> {
                           color: AppColors.lightGrey,
                           fontSize: Sizes.dimen_12,
                           fontStyle: FontStyle.italic),
-                    ))
+                    ),
+                  )
                 : const SizedBox.shrink(),
           ],
         );
