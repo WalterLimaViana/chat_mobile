@@ -49,6 +49,7 @@ dependencies:
   url_launcher: ^6.1.4
   equatable: ^2.0.3
   google_sign_in_web: ^0.10.1+3
+  flutter_launcher_icons: ^0.9.3
   
 
 dev_dependencies:
@@ -78,6 +79,7 @@ flutter:
     - assets/img/splash.png
     - assets/img/back.png
     - assets/img/google_login.jpg
+    - assets/img/icon_chat.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -105,3 +107,7 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+flutter_icons:
+ image_path: "assets/img/icon_chat.png"
+ android: true
+ ios: true
